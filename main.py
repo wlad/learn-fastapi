@@ -12,5 +12,15 @@ app = FastAPI()
 
 
 @app.get("/")
-def root():
+async def root():
     return {"message": "hello WLAD"}
+
+
+@app.get("/items/{item_id}")
+async def read_item(item_id: int):
+    return {"item_id": item_id}
+
+
+@app.get("/switch-light/{switch}")
+async def switch_light(switch: str):
+    return {"light status": f"the light is {switch}"}
